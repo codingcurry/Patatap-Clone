@@ -5,10 +5,20 @@
 	<link rel="stylesheet" type="text/css" href="circles.css">
 	<script type="text/javascript" src="paper-full.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
+		var myCircle = [];
+		var count = 0;
 		function onKeyDown(event) {
-			var myCircle= new Path.Circle(new Point(Math.random()*view.size.width, Math.random()*view.size.height), 10);
-			myCircle.fillColor = 'red';
+			myCircle[count]= new Path.Circle(new Point(Math.random()*view.size.width, Math.random()*view.size.height), 200);
+			myCircle[count].fillColor = 'red';
+			count++;
 		}
+		function onFrame(event) {
+			for(var i=0; i<myCircle.length; i++) {
+				myCircle[i].fillColor.hue+=1;
+				myCircle[i].scale(.9);
+			}
+		}
+
 
 	</script>
 </head>
